@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(/*'mongodb://localhost/smsdb'*/
-'mongodb+srv://<gcnctz@gmail.com>:<gustavo1987&1>@cluster0-ewynv.mongodb.net/test?retryWrites=true&w=majority', {
+process.env.DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
