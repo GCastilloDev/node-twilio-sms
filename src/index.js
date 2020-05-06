@@ -1,9 +1,17 @@
 console.clear();
 
-// require('dotenv').config();
+if(process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+}
+ 
 const app = require('./server');
-require('./database');
+const http = require('http');
 
-app.listen(app.get('port'), ()=> {
+const server = http.createServer(app);
+
+require('./database');
+require('./sockets').connection(server);
+
+server.listen(app.get('port'), ()=> {
     console.log('Server on port', app.get('port'));
 })

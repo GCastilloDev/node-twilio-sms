@@ -12,12 +12,17 @@
     </div>
     <div class="col-md-8">
         {{#if messages}}
-            {{#each messages}}
-                <div class="card card-body">
+            <ul class="list-group" style="height: 70vh; overflow-y: auto;" id="messages">
+                {{#each messages}}
+                <li class="list-group-item list-group-item-info list-group-item-action">
                     <p>{{Body}}</p>
-                    <span>{{hideNumber To}}</span>
-                </div>
+                    <p>{{_id}}</p>
+                    <span>De: {{To}}</span>
+                    <span>Para: {{From}}</span>
+                    <p>{{timeago createdAt}}</p>
+                </li>
             {{/each}}
+            </ul>
         {{else}}
             <p>No messages yer</p>
         {{/if}}
